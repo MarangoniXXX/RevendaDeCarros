@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenda de Carros</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .car-card {
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    .car-card:hover {
+      transform: scale(1.02);
+    }
+    .price {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #d63384;
+    }
+    .carousel-item img {
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .filter-panel {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+    <a class="navbar-brand fw-bold" href="#">RevendaCar</a>
+    <div class="ms-auto d-flex gap-3">
+      <input type="text" class="form-control" placeholder="Buscar por modelo ou marca...">
+      <button class="btn btn-primary">Buscar</button>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <!-- Carrossel -->
+    <div id="mainCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://images.unsplash.com/photo-1549921296-3a6b36d47f41" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://images.unsplash.com/photo-1542362567-b07e54358753" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="row">
+      <!-- Filtros -->
+      <div class="col-md-3">
+        <div class="filter-panel">
+          <h5>Filtros</h5>
+          <label>Marca:</label>
+          <select class="form-select mb-3">
+            <option>Todas</option>
+            <option>Hyundai</option>
+            <option>Chevrolet</option>
+            <option>Volkswagen</option>
+          </select>
+
+          <label>Ano de Fabricação:</label>
+          <input type="number" class="form-control mb-3" placeholder="ex: 2023">
+
+          <label>Preço Máximo:</label>
+          <input type="number" class="form-control mb-3" placeholder="ex: 100000">
+
+          <button class="btn btn-outline-primary w-100">Aplicar Filtros</button>
+        </div>
+      </div>
+
+      <!-- Lista de Carros -->
+      <div class="col-md-9">
+        <div class="row">
+          <!-- Card do carro -->
+          <div class="col-md-4 mb-4">
+            <div class="card car-card">
+              <img src="https://cdn.motor1.com/images/mgl/lrzv6/s1/hyundai-creta-2023.jpg" class="card-img-top" alt="Hyundai Creta">
+              <div class="card-body">
+                <h5 class="card-title">HYUNDAI CRETA</h5>
+                <p class="mb-1">Marca: Hyundai</p>
+                <p class="mb-1">Ano: 2025</p>
+                <p class="mb-1">Placa: ABC-1234</p>
+                <p class="price">R$ 187.590</p>
+                <a href="#" class="btn btn-dark w-100">Ver oferta</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Você pode repetir o bloco acima para outros carros -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Contato / Localização -->
+    <div class="mt-5 p-4 bg-light rounded">
+      <h5>Entre em contato</h5>
+      <p>Email: contato@revendacar.com.br | WhatsApp: (41) 99999-9999</p>
+      <p>Localização: São José dos Pinhais, Paraná</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
