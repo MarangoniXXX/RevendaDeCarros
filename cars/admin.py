@@ -1,11 +1,14 @@
 from django.contrib import admin
-from cars.models import Car,Brand
+from cars.models import Car,Brand,Fuel_type
 
 
 class BrandAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ('name',)
 
+class Fuel_typeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)
 
 
 class CarAdmin(admin.ModelAdmin):
@@ -14,3 +17,4 @@ class CarAdmin(admin.ModelAdmin):
 
 admin.site.register(Car, CarAdmin)
 admin.site.register(Brand, BrandAdmin)
+admin.site.register(Fuel_type, Fuel_typeAdmin)
