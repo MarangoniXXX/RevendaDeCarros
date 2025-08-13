@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ carro.brand.name }} {{ carro.model }} - RevendaCar</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { background-color: #f8f9fa; }
+    .detail-card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1 );
+    }
+    .price {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #0d6efd;
+    }
+    .car-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .spec-list .list-group-item {
+      border: none;
+      padding-left: 0;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+  <a class="navbar-brand fw-bold" href="{% url 'cars:home' %}">RevendaCar</a>
+</nav>
+
+<div class="container my-5">
+  <div class="detail-card">
+    <div class="row g-5">
+      <div class="col-lg-7">
+        {% if carro.photo %}
+          <img src="{{ carro.photo.url }}" class="car-image" alt="{{ carro.model }}">
+        {% else %}
+          <img src="https://via.placeholder.com/800x500?text=Sem+Imagem" class="car-image" alt="Sem imagem">
+        {% endif %}
+      </div>
+      <div class="col-lg-5">
+        <h1>{{ carro.model }}</h1>
+        <p class="lead text-muted fs-4">{{ carro.brand.name }}</p>
+        <p class="price mt-3 mb-4">
+          {% if carro.value %}
+            R$ {{ carro.value|floatformat:2 }}
+          {% else %}
+            Preço a consultar
+          {% endif %}
+        </p>
+        <ul class="list-group list-group-flush spec-list">
+    <!-- Ano de fabricação e modelo -->
+    {% if carro.factory_year and carro.model_year %}
+        <li class="list-group-item"><strong>Ano:</strong> {{ carro.factory_year }} / {{ carro.model_year }}</li>
+    {% endif %}
+
+    <!-- Combustível -->
+    {% if carro.fuel_type %}
+        <li class="list-group-item"><strong>Combustível:</strong> {{ carro.fuel_type.name }}</li>
+    {% endif %}
+
+    <!-- Placa -->
+    {% if carro.plate %}
+        <li class="list-group-item"><strong>Placa:</strong> {{ carro.plate }}</li>
+    {% endif %}
+
+    <!-- Valor -->
+    {% if carro.value %}
+        <li class="list-group-item"><strong>Valor:</strong> R$ {{ carro.value|floatformat:2 }}</li>
+    {% else %}
+        <li class="list-group-item"><strong>Valor:</strong> Preço a consultar</li>
+    {% endif %}
+
+        </ul>
+
+        <!-- Botão de WhatsApp -->
+        <a href="https://wa.me/5541998325176?text=Olá,%20tenho%20interesse%20no%20{{ carro.brand.name }}%20{{ carro.model }}" 
+           class="btn btn-success btn-lg w-100 mt-4" target="_blank" 
+           style="font-size: 1.2rem; display: flex; align-items: center; justify-content: center;">
+           <i class="fab fa-whatsapp me-2"></i> Tenho Interesse!
+        </a>
+
+      </div>
+    </div>
+  </div>
+
